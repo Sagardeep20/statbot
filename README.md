@@ -173,7 +173,7 @@ MIT License
 
 ## Author
 
-Sagardeep Choudhury
+Group-24 project
 
 ---
 

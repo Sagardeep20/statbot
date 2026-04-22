@@ -1,119 +1,180 @@
-# Statbot 🤖
+# 🤖 Statbot - AI Codebase Assistant
 
-**Statbot** is an AI-powered codebase assistant and Socratic coding coach that runs directly in your terminal. 
-
-Instead of copying and pasting your code into ChatGPT, you can run Statbot directly in your project folder. It will read your entire project instantly and help you hunt down bugs, understand your code, and even coach you through fixing issues yourself without just giving you the answers!
-
-Powered by **Google Gemini 2.5 Flash**, it is lightning-fast and capable of reading massive codebases (up to 200,000 characters of context at once).
+**Statbot** is an AI-powered codebase assistant that runs directly in your terminal. It analyzes your code, finds bugs, explains logic, and helps you fix issues using Google Gemini AI.
 
 ---
 
-## 🌟 Features
-
-- **Global CLI:** Run `statbot` from anywhere in your terminal. No need to move files around!
-- **Auto-Context:** Automatically reads all the code in your current folder and provides it to the AI.
-- **Deep Bug Analysis (`analyze`):** Ask Statbot to do a deep, rigorous bug hunt on a specific file and get precise line numbers and fixed code.
-- **Socratic Coach (`iterate`):** Stuck on a problem but want to learn? Statbot will point out the single most important bug, give you a conceptual hint, and refuse to write the code for you. Fix it, type `reiterate`, and it will score your progress!
-- **Multi-Language Support:** Understands Python, JavaScript, TypeScript, C++, Java, Rust, HTML, CSS, and more.
-
----
-
-## 💻 Installation (Beginner Friendly!)
-
-Follow these exact steps to install Statbot on your machine.
-
-### Step 1: Clone or Download this Project
-First, download this folder to your computer. Open your terminal (Command Prompt, PowerShell, or Mac Terminal) and navigate inside the folder where you downloaded it.
+## 🚀 Quick Demo
 
 ```bash
-cd path/to/statbot
+$ python -m statbot.statbot
+╭───────────────────────────────────────────────╮
+│ Welcome to Statbot!                           │
+│ Your AI Codebase Assistant powered by Gemini.  │
+╰───────────────────────────────────────────────╯
+Working directory: /your/project
+
+Codebase loaded: 18 files, ~23K tokens
+
+Multi-language support: Python, JavaScript, TypeScript, C++, Java, Rust, Go, and more!
+
+You: analyze demo_code.py
 ```
 
-### Step 2: Install the Package
-Run the following command. This will install Statbot globally on your machine so you can use it anywhere.
+---
 
+## ✨ Features
+
+| Feature | Description |
+|---------|-------------|
+| **Multi-Language Support** | Analyzes 17 programming languages |
+| **Bug Detection** | Finds bugs with exact line numbers |
+| **Auto-Fix Suggestions** | Provides corrected code |
+| **Code Explanation** | Explains complex logic |
+| **Socratic Coaching** | Guides you to fix bugs yourself |
+| **Context-Aware** | Reads entire codebase at once |
+
+### Supported Languages
+Python, JavaScript, TypeScript, C, C++, Java, HTML, CSS, JSON, YAML, TOML, XML, Rust, Go, Bash, Markdown, Plain Text
+
+---
+
+## 🛠️ Installation
+
+### Prerequisites
+- Python 3.10+
+- Gemini API Key (free)
+
+### Step 1: Clone the Project
+```bash
+git clone https://github.com/YOUR_USERNAME/statbot.git
+cd statbot
+```
+
+### Step 2: Install Dependencies
 ```bash
 pip install -e .
 ```
-*(The `-e .` means it installs the code from the current folder in "editable" mode).*
 
-### Step 3: Get a Free Gemini API Key
-Statbot uses Google's AI, which requires a free API key.
-1. Go to [Google AI Studio](https://aistudio.google.com/apikey).
-2. Sign in with your Google account.
-3. Click **"Create API key"** and copy the long string of letters and numbers it gives you.
+### Step 3: Get Free API Key
+1. Go to: https://aistudio.google.com/apikey
+2. Click **"Create API key"**
+3. Copy the key
 
-### Step 4: Save Your API Key
-We need to save this key so Statbot can use it automatically without you having to paste it every time.
-
-**If you are on Windows (PowerShell):**
-Run this command, replacing `your_api_key_here` with your actual key:
-```powershell
-python -c "import os; open(r'C:\Users\' + os.getlogin() + '\.statbot\.env', 'w', encoding='utf-8').write('GEMINI_API_KEY=your_api_key_here\n')"
+### Step 4: Save API Key
+Create a `.env` file in the project root:
+```
+GEMINI_API_KEY=your_api_key_here
 ```
 
-**If you are on Mac/Linux:**
+---
+
+## 📖 How to Use
+
+### Basic Usage
 ```bash
-mkdir -p ~/.statbot
-echo "GEMINI_API_KEY=your_api_key_here" > ~/.statbot/.env
+python -m statbot.statbot
+```
+
+### Commands Inside Statbot
+
+| Command | Example | Description |
+|---------|---------|-------------|
+| `analyze <file>` | `analyze main.py` | Find bugs in file |
+| `explain <file>` | `explain utils.py` | Explain the code |
+| `iterate <file>` | `iterate app.py` | Socratic coaching |
+| `exit` | `exit` | Quit Statbot |
+
+### Example Sessions
+
+#### 1. Find Bugs
+```
+You: analyze statbot/demo_code.py
+→ Found: Infinite loop at line 19
+→ Fix: Change high = mid to high = mid - 1
+```
+
+#### 2. Explain Code
+```
+You: explain main.py
+→ Explains what each function does
+```
+
+#### 3. Socratic Learning
+```
+You: iterate algorithm.py
+→ Hint: Check your loop condition
+→ Fix it yourself, then type: reiterate
 ```
 
 ---
 
-## Supported Languages
+## 📁 Project Structure
 
-- Python, JavaScript, TypeScript
-- C, C++, Java
-- HTML, CSS, JSON, YAML
-- Rust, Go, Bash, and more!
+```
+statbot/
+├── statbot/
+│   ├── __init__.py
+│   ├── statbot.py          # Main application
+│   ├── demo_code.py       # Demo with bugs
+│   ├── demo_code.cpp      # C++ demo
+│   ├── demo_code.js       # JavaScript demo
+│   └── language_support/   # Language detection
+│       ├── detection.py   # Auto-detect language
+│       ├── profiles.py    # Bug patterns per language
+│       ├── prompt_builder.py
+│       └── registry.py
+├── test_language_support.py # Unit tests
+├── pyproject.toml         # Package config
+├── README.md
+└── .env.example
+```
 
 ---
 
-## Supported Languages
+## 🧪 Run Tests
 
-- Python, JavaScript, TypeScript
-- C, C++, Java
-- HTML, CSS, JSON, YAML
-- Rust, Go, Bash, Markdown, TOML, XML
+```bash
+pip install pytest
+python -m pytest test_language_support.py -v
+```
 
-Total: **17 Languages**
+**Test Results: 73/73 PASSED** ✅
 
 ---
 
-## 🚀 How to Use Statbot
+## 🎯 What Makes Statbot Special?
 
-Now that it's installed, you never have to come back to this folder. You can use it on **any** project!
+### 1. Multi-Language Detection
+Automatically detects Python, JavaScript, C++, Java, and 13 more languages.
 
-1. Open your terminal.
-2. `cd` into the folder of the project you are working on.
-3. Run:
-   ```bash
-   python -m statbot.statbot
-   ```
+### 2. Bug Pattern Database
+Each language has specific bug patterns:
+- **Python**: Mutable defaults, bare except, late binding
+- **JavaScript**: == vs ===, var closures, missing await
+- **C++**: Buffer overflow, memory leaks, null pointers
 
-*Note: If installed globally, you can also run `statbot`*
+### 3. Precise Line Numbers
+Finds exact line numbers and provides fixes.
 
-Statbot will boot up, scan your project, and give you a `You:` prompt.
+### 4. Free to Use
+Uses Google's free tier Gemini API.
 
-### Inside Statbot, you can use these commands:
+---
 
-#### 1. General Chat
-Just ask questions! 
-- *"Where is the user login logic?"*
-- *"Explain how the database connection works."*
+## 📝 License
 
-#### 2. Deep Analysis
-Type `analyze <filename>` to get a rigorous bug report for a specific file.
-- `You: analyze app.js`
-- `You: analyze main.py why is it crashing on startup?`
+MIT License
 
-#### 3. Socratic Coaching (The best way to learn)
-Type `iterate <filename>`. Statbot will look at your file, find the biggest bug, and give you a hint without showing you the answer.
-- `You: iterate index.html`
+---
 
-Go to your code editor, try to fix the bug based on the hint, save the file, and then type:
-- `You: reiterate`
+## 👤 Author
 
-Statbot will look at what you changed, tell you if you fixed it, give you an Iteration Score, and point out the next issue!
+Your Name
 
-Type `exit` or `quit` to close Statbot when you're done.
+---
+
+## 🙏 Acknowledgments
+
+- [Google Gemini AI](https://ai.google/) - Powered by Gemini
+- [Rich Library](https://github.com/Textualize/rich) - Beautiful CLI output

@@ -60,16 +60,38 @@ echo "GEMINI_API_KEY=your_api_key_here" > ~/.statbot/.env
 
 ---
 
+## Supported Languages
+
+- Python, JavaScript, TypeScript
+- C, C++, Java
+- HTML, CSS, JSON, YAML
+- Rust, Go, Bash, and more!
+
+---
+
+## Supported Languages
+
+- Python, JavaScript, TypeScript
+- C, C++, Java
+- HTML, CSS, JSON, YAML
+- Rust, Go, Bash, Markdown, TOML, XML
+
+Total: **17 Languages**
+
+---
+
 ## 🚀 How to Use Statbot
 
 Now that it's installed, you never have to come back to this folder. You can use it on **any** project!
 
 1. Open your terminal.
 2. `cd` into the folder of the project you are working on.
-3. Type:
+3. Run:
    ```bash
-   statbot
+   python -m statbot.statbot
    ```
+
+*Note: If installed globally, you can also run `statbot`*
 
 Statbot will boot up, scan your project, and give you a `You:` prompt.
 
